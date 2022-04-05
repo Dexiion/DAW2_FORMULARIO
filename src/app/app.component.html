@@ -1,0 +1,66 @@
+<div style="margin-left: 2em; margin-top: 2em;">
+  <h1>Añadir Personas</h1>
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput type="text" [(ngModel)]='nombre'>
+    <button *ngIf="nombre" matSuffix mat-icon-button aria-label="Clear" (click)="nombre=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  
+  <mat-form-field class="example-form-field" appearance="fill" style="margin-left: 1.2em;">
+    <mat-label>Apellidos</mat-label>
+      <input matInput type="text" [(ngModel)]='apellidos'>
+      <button *ngIf="apellidos" matSuffix mat-icon-button aria-label="Clear" (click)="apellidos=''">
+        <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  
+  <button _ngcontent-xkt-c120="" mat-raised-button="" color="primary" class="mat-focus-indicator mat-raised-button mat-button-base mat-primary" style="margin-left: 1.2em;" (click)="addItem()"><span class="mat-button-wrapper">Submit</span><span matripple="" class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></button>  
+</div>
+
+<div *ngIf='items.length > 0' style="margin-left: 2em; margin-top: 2em;">
+  <h2>Personas</h2>
+  <mat-action-list>
+    <mat-list-item *ngFor="let item of items" (click)="displayModifyItem(item.id)">
+      <div>
+        Nombre: {{ item.nombre }}
+      </div>
+      <div style="margin-left: 2em;">
+        Apellidos: {{ item.apellidos }}
+      </div>
+      <div style="margin-left: 2em;">
+        <button _ngcontent-xkt-c120="" mat-raised-button="" color="warn" class="mat-focus-indicator mat-raised-button mat-button-base mat-warn" (click)="removeItem(item.id)"><span class="mat-button-wrapper">Delete</span><span matripple="" class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></button>
+      </div>
+    </mat-list-item>
+  </mat-action-list>
+</div>
+
+<div *ngIf='modify' style="margin-left: 2em; margin-top: 2em;">
+  <h2>Modificar Persona</h2>
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>Nuevo Nombre</mat-label>
+    <input matInput type="text" [(ngModel)]='nuevo_nombre'>
+    <button *ngIf="nuevo_nombre" matSuffix mat-icon-button aria-label="Clear" (click)="nuevo_nombre=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  
+  <mat-form-field class="example-form-field" appearance="fill" style="margin-left: 1.2em;">
+    <mat-label>Nuevos Apellidos</mat-label>
+      <input matInput type="text" [(ngModel)]='nuevos_apellidos'>
+      <button *ngIf="nuevos_apellidos" matSuffix mat-icon-button aria-label="Clear" (click)="nuevos_apellidos=''">
+        <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  
+  <button _ngcontent-xkt-c120="" mat-raised-button="" color="primary" class="mat-focus-indicator mat-raised-button mat-button-base mat-primary" style="margin-left: 1.2em;" (click)="modifyItem()"><span class="mat-button-wrapper">Modify</span><span matripple="" class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></button>  
+</div>
+
+<div *ngIf='error' style="margin-left: 2em; margin-top: 2em;">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input matInput disabled value="Introduzca los datos">
+  </mat-form-field>
+  <button (click)="error=false"><mat-icon>close</mat-icon></button>
+</div>
+
